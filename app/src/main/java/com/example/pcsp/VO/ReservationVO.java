@@ -1,4 +1,4 @@
-package com.example.pcsp;
+package com.example.pcsp.VO;
 
 public class ReservationVO {
     int carReservationNum;
