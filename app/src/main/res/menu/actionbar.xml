@@ -16,4 +16,9 @@
         android:icon="@drawable/btn_login"
         app:showAsAction="always" />
 
+    <item android:id="@+id/btn_splash"
+        android:title="login"
+        android:icon="@drawable/btn_splash"
+        app:showAsAction="always" />
+
 </menu>

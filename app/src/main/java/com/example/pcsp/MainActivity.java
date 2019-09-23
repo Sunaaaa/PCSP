@@ -55,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
                 ComponentName cname_login = new ComponentName("com.example.pcsp","com.example.pcsp.LoginActivity");
                 intent.setComponent(cname_login);
                 intent.putExtra("data","로그인");
+                break;
+
+            case R.id.btn_splash:
+                ComponentName cname_splash = new ComponentName("com.example.pcsp","com.example.pcsp.SplashActivity");
+                intent.setComponent(cname_splash);
+                intent.putExtra("data","스프레쉬");
         }
         startActivity(intent);
         return true;
