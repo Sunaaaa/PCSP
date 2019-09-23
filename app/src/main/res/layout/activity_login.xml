@@ -32,11 +32,10 @@
 
         <EditText
             android:id="@+id/userId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="50px"
-            android:layout_weight="5"
-            android:gravity="center" />
+            android:layout_weight="2" />
 
 
     </LinearLayout>
@@ -58,11 +57,10 @@
 
         <EditText
             android:id="@+id/userPw"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="50px"
-            android:layout_weight="5"
-            android:gravity="center" />
+            android:layout_weight="2" />
 
 
     </LinearLayout>
@@ -80,6 +78,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/white"
             android:gravity="center"
+            android:textColor="@android:color/black"
             android:text="Login" />
 
     </LinearLayout>
