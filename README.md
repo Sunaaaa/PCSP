@@ -33,7 +33,9 @@ CAN 통신을 이용한 P2P Car Sharing Platform : PCSP 서비스 구현
 
 ## 안드로이드 -> 서버
 
-- APP/ANDROID
+#### 안드로이드에서 나 안드로이드에요~(소켓 만들자 )
+
+- APP/ANDROID/
 <br>
 
 #### 안드로이드에서 키를 요청할때 (모든 조건 충족시) 
