@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.pcsp.VO.UserVO;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MainActivity extends AppCompatActivity {
 
     private GoogleMap mMap;
+    UserVO userVO;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,6 +72,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent login_intent = getIntent();
+        if (login_intent != null){
+            userVO = login_intent.getParcelableExtra("USERVO");
+            Log.i("From_LoginActivity","Service에서 USERVO 가져옴" + userVO.getUserName());
+        }
 
         Button btn = (Button)findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
