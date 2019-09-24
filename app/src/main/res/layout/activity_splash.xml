@@ -4,15 +4,65 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:gravity="center"
     android:background="@android:color/white">
 
     <ImageView
-        android:id="@+id/sp_image"
-        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:id="@+id/yjc"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20px"
         android:scaleType="fitCenter"
+        android:layout_marginBottom="50dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/btn_login"/>
+        android:src="@drawable/yjc"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/sp_image1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="20px"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src="@drawable/btn_login"/>
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/sp_image2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="20px"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src="@drawable/btn_login"/>
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/sp_image3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="20px"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src="@drawable/btn_login"/>
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/sp_image4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="20px"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src="@drawable/btn_login"/>
+
+    </LinearLayout>
 
 </LinearLayout>
