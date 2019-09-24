@@ -18,6 +18,9 @@ CAN 통신을 이용한 P2P Car Sharing Platform : PCSP 서비스 구현
 
 ## 라떼판다 -> 서버 
 
+#### 라떼 판다에서 나 라떼 판다에요~(소켓 만들자 )
+ - CAR/PANDA/
+<br>
 #### 라떼 판다에서 차량을 등록을 할때 
 
 - CAR/CARREGISTER/userId,userName,carNum
@@ -29,9 +32,11 @@ CAN 통신을 이용한 P2P Car Sharing Platform : PCSP 서비스 구현
 <br>
 
 ## 안드로이드 -> 서버
-
-#### 안드로이드에서 키를 요청할때 (모든 조건 충족시) APP/KEYREQUEST/userId,carNum
-
+-APP/ANDROID
+<br>
+#### 안드로이드에서 키를 요청할때 (모든 조건 충족시) 
+- APP/KEYREQUEST/userId,carNum
+<br>
 #### 안드로이드에서 로그인 할때
 
 - APP/LOGIN/userID,PW
