@@ -55,7 +55,7 @@ CAN 통신을 이용한 P2P Car Sharing Platform : PCSP 서비스 구현
 
 #### 안드로이드에서 로그인 할때
 
-- APP/LOGIN/userID,PW
+- APP/USERLOGIN/userID,PW
 
 <br>
 
