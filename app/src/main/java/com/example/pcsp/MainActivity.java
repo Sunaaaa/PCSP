@@ -73,11 +73,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent login_intent = getIntent();
-        if (login_intent != null){
-            userVO = login_intent.getParcelableExtra("USERVO");
-            Log.i("From_LoginActivity","Service에서 USERVO 가져옴" + userVO.getUserName());
-        }
+//        Intent login_intent = getIntent();
+//        if (login_intent != null){
+//            userVO = login_intent.getParcelableExtra("USERVO");
+//            Log.i("From_LoginActivity","Service에서 USERVO 가져옴" + userVO.getUserName());
+//        }
 
         Button btn = (Button)findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {

@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.os.Parcelable;
 import android.util.Log;
@@ -27,19 +30,43 @@ import java.net.URL;
 public class LoginActivity extends AppCompatActivity {
 
     EditText ed_id, ed_pw;
-    String uid, upw;
+    String uid, upw, logininfo;
     Button btn_login;
     UserVO userVO;
+    PCSPService mPcspService;
+    Boolean isService = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Intent intent = getIntent();
-        String a = intent.getStringExtra("data");
+        Intent service_intent = new Intent();
+        ComponentName cname = new ComponentName("com.example.pcsp",
+                "com.example.pcsp.PCSPService");
+        service_intent.setComponent(cname);
 
-        Toast.makeText(getApplicationContext(), a, Toast.LENGTH_SHORT);
+        // 서비스 클래스를 찾아서 객체화 시키고 실행!
+        startService(service_intent);
+
+        Intent getIntent = getIntent();
+
+        ServiceConnection conn = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                PCSPService.MyBinder mb = (PCSPService.MyBinder) iBinder;
+                mPcspService = mb.getService();
+                isService = true;
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+                isService = false;
+            }
+        };
+        Intent intent = new Intent(LoginActivity.this, PCSPService.class);
+        bindService(intent, conn, Context.BIND_ABOVE_CLIENT);
+
 
         ed_id = (EditText) findViewById(R.id.userId);
         ed_pw = (EditText) findViewById(R.id.userPw);
@@ -50,21 +77,30 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 uid = ed_id.getText().toString();
                 upw = ed_pw.getText().toString();
+                Log.i("USERINFO에 대한 정보",uid + "," + upw);
+                logininfo = uid + "," + upw;
 
-                Intent intent = new Intent();
-                ComponentName cname = new ComponentName("com.example.pcsp",
-                        "com.example.pcsp.PCSPService");
-                intent.setComponent(cname);
-                intent.putExtra("ID", uid);
-                intent.putExtra("PW", upw);
-                // 서비스 클래스를 찾아서 객체화 시키고 실행!
-                startService(intent);
-
-                // 서비스 결과가 "Login_OK"이면, MainActivity로 이동
+                if (!isService) {
+                    Toast.makeText(getApplicationContext(),
+                            "서비스중이 아닙니다, 데이터받을수 없음",
+                            Toast.LENGTH_LONG).show();
+                }
+                if(mPcspService == null){
+                    Toast.makeText(getApplicationContext(),
+                            "서비스가 바인딩이 안됬어 ㅠㅠ",
+                            Toast.LENGTH_LONG).show();
+                } else{
+                    if( !uid.isEmpty() ) {
+                        if (!upw.isEmpty()) {
+                            mPcspService.clientToServer("USERLOGIN", logininfo);
+                            Log.i("USERINFO를 보낸다!",logininfo);
+                            ed_id.setText("");
+                            ed_pw.setText("");
+                        }
+                    }
+                }
             }
         });
-
-
     }
 
     public void doLogin() {
@@ -99,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
             String[] userData = login_result.split(",");
             if (userData[0].equals("OK")) {
                 Log.i("LOGIN_OK","로그인 성공");
+
 //                doLogin();
             }
             if (userData[0].equals("FAIL")) {

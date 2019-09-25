@@ -40,7 +40,7 @@ public class PCSPService extends Service {
             while (true) {
                 try {
                     String data = (String) blockingQueue.take();
-                    Log.i("ChattingClientError", "blocking queue send: " + data);
+                    Log.i("ChattingClient", "blocking queue send: " + data);
                     out.println(data);
                     out.flush();
                 } catch (Exception e) {
@@ -59,11 +59,11 @@ public class PCSPService extends Service {
         public void run() {
             try {
                 try {
-                    mSocket = new Socket("",2206);
+                    mSocket = new Socket("70.12.115.72",2206);
                     Log.i("ReceiveRunnable", "2206 서버 연결 성공!");
                     br = new BufferedReader(new InputStreamReader(mSocket.getInputStream()));
                     out = new PrintWriter(mSocket.getOutputStream());
-                    out.println("APP/ANDROID/");
+                    out.println("APP/ANDROID/ ");
                     out.flush();
 
                 }catch (Exception e){
@@ -120,17 +120,59 @@ public class PCSPService extends Service {
         return flag;
     }
 
-    public PCSPService() {
+    public void serverToClient(){
+
     }
 
-    public void clientToServer(){
+    public void clientToServer(String protocol, String data){
+        Log.i("serviceClient" , protocol);
 
+        if(protocol.equals("USERLOGIN")){
+            mBlockingQueue.add("APP/USERLOGIN/"+data);
+            Log.i("serviceClient" , "로그인 정보 : " + data);
+        } else if (protocol.equals("MKRO")){
+//            blockingQueue.add("/@MKRO,"+msg);
+        } else {
+            Log.i("serviceClient" , "보낼때 프로토콜 문제 있음");
+        }
+
+//        switch(protocol){
+//            case "USERLOGIN":
+//                mBlockingQueue.add("/USERLOGIN/"+data);
+//                break;
+//            default :
+//                Log.i("serviceClient" , "보낼때 프로토콜 문제 있음");
+//                break;
+//        }
+
+    }
+
+    public PCSPService() {
     }
 
     // APP/(protocol)/data1, data2, data3
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
+        return mBinder;
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        ReceiveRunnable mReceiveRunnable = new ReceiveRunnable();
+        SendRunnable mSendRunnable = new SendRunnable(mBlockingQueue);
+        Thread t1 = new Thread(mReceiveRunnable);
+        Thread t2 = new Thread(mSendRunnable);
+        t1.start();
+        t2.start();
+
+        return super.onStartCommand(intent, flags, startId);
+    }
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+        // 서비스가 종료될 때 실행
+
     }
 }
