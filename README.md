@@ -20,7 +20,10 @@ CAN 통신을 이용한 P2P Car Sharing Platform : PCSP 서비스 구현
 
 - CAR/PANDA/
   <br>
+#### 라뗴 판다에서 로그인이 되었을때 CarNum알려주기
 
+- CAR/PANDA/carNum
+<br>
 #### 라떼 판다에서 차량을 등록을 할때 
 
 - CAR/CARREGISTER/userId,userName,carNum
@@ -37,6 +40,9 @@ CAN 통신을 이용한 P2P Car Sharing Platform : PCSP 서비스 구현
 
 - APP/ANDROID/
 <br>
+#### 안드로이드에서 로그인 성공 후 userID알려주기
+ - APP/ANDROID/userID
+ <br>
 
 #### 안드로이드에서 키를 요청할때 (모든 조건 충족시) 
 
@@ -73,6 +79,10 @@ CAN 통신을 이용한 P2P Car Sharing Platform : PCSP 서비스 구현
 
 ## 서버 -> 안드로이드
 
+#### 로그인 성공,실패
+- ANDROID/LOGIN/OK
+- ANDROID/LOGIN/FAIL
+<br>
 #### 마커를 클릭해서 차리스트를 줄때 
 
 - ANDROID/
@@ -93,9 +103,14 @@ CAN 통신을 이용한 P2P Car Sharing Platform : PCSP 서비스 구현
 
 ## 서버 -> 라떼판다
 
+#### 로그인 성공,실패
+- PANDA/LOGIN/OK
+- PANDA/LOGIN/FAIL
+<br>
+
 #### 서버로 부터 키값을 받을때
 
-- panta/
+- PANDA/
 
 <br>
 
