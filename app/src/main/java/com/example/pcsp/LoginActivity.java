@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
     public void doLogin() {
         Intent intent = new Intent();
         ComponentName cname_loginok = new ComponentName("com.example.pcsp",
-                "com.example.pcsp.MainActivity");
+                "com.example.pcsp.MapsActivity");
         intent.setComponent(cname_loginok);
         intent.putExtra("USERVO", userVO);
         startActivity(intent);

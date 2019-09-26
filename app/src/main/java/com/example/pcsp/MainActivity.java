@@ -86,18 +86,18 @@ public class MainActivity extends AppCompatActivity {
 //            Log.i("From_LoginActivity","Service에서 USERVO 가져옴" + userVO.getUserName());
 //        }
 //
-//        Button btn = (Button)findViewById(R.id.btn);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent();
-//                ComponentName componentName = new ComponentName("com.example.pcsp","com.example.pcsp.MapsActivity");
-//                intent.setComponent(componentName);
-//                intent.putExtra("check", "check");
-//                startActivity(intent);
-//                Log.i("_MAINACTIVITY","화면 이동");
-//            }
-//        });
+        Button btn = (Button)findViewById(R.id.btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                ComponentName componentName = new ComponentName("com.example.pcsp","com.example.pcsp.MapsActivity");
+                intent.setComponent(componentName);
+                intent.putExtra("check", "check");
+                startActivity(intent);
+                Log.i("_MAINACTIVITY","화면 이동");
+            }
+        });
 
     }
 

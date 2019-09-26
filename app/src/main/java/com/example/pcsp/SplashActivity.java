@@ -25,14 +25,13 @@ public class SplashActivity extends AppCompatActivity {
         ImageView iv4 = (ImageView)findViewById(R.id.sp_image4);
 
         Glide.with(this).load(R.raw.joos_splash).into(iv1);
-        Glide.with(this).load(R.raw.joos_splash).into(iv2);
-        Glide.with(this).load(R.raw.joos_splash).into(iv3);
-        Glide.with(this).load(R.raw.joos_splash).into(iv4);
+        Glide.with(this).load(R.raw.yjc_s2).into(iv2);
+        Glide.with(this).load(R.raw.yjc_s3).into(iv3);
+        Glide.with(this).load(R.raw.yjc_s4).into(iv4);
 
         Handler mHandler = new Handler();
         mHandler.postDelayed(new SplashHandler(), 2000);
         Log.i("SplashAcitivty", "SplashAcitivty");
-
 
     }
 
