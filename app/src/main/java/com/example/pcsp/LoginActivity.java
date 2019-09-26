@@ -49,8 +49,6 @@ public class LoginActivity extends AppCompatActivity {
         // 서비스 클래스를 찾아서 객체화 시키고 실행!
         startService(service_intent);
 
-        Intent getIntent = getIntent();
-
         ServiceConnection conn = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName componentName, IBinder iBinder) {

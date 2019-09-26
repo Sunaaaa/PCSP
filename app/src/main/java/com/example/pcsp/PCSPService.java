@@ -40,11 +40,11 @@ public class PCSPService extends Service {
             while (true) {
                 try {
                     String data = (String) blockingQueue.take();
-                    Log.i("ChattingClient", "blocking queue send: " + data);
+                    Log.i("PCSPService_Send", "blocking queue send: " + data);
                     out.println(data);
                     out.flush();
                 } catch (Exception e) {
-                    Log.i("ChattingClientError", "blocking queue 문제 : " + e.toString());
+                    Log.i("PCSPService_Send_Error", "blocking queue 문제 : " + e.toString());
                 }
             }
 
@@ -121,7 +121,7 @@ public class PCSPService extends Service {
         super.onCreate();
 
         // 서비스에서 가장 먼저 호출됨 (최초 한번만 호출)
-        Log.i("PCSPService", "서비스 시작, 서버랑 연결됨!");
+        Log.i("PCSPService", "서비스 시작");
     }
 
     class MyBinder extends Binder{
@@ -143,10 +143,22 @@ public class PCSPService extends Service {
         Log.i("serviceClient" , protocol);
 
         if(protocol.equals("USERLOGIN")){
-            mBlockingQueue.add("APP/USERLOGIN/"+data);
+            mBlockingQueue.add("APP/USERLOGIN/" + data);
             Log.i("serviceClient" , "로그인 정보 : " + data);
-        } else if (protocol.equals("MKRO")){
-//            blockingQueue.add("/@MKRO,"+msg);
+        } else if (protocol.equals("USERLOGINOK")){
+            mBlockingQueue.add("APP/USERNUM/" + data);
+
+            Intent i  = new Intent();
+            ComponentName componentName = new ComponentName("com.example.pcsp","com.example.pcsp.MainActivity");
+            i.setComponent(componentName);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.putExtra("test", "test");
+
+            startActivity(i);
+
+
         } else {
             Log.i("serviceClient" , "보낼때 프로토콜 문제 있음");
         }
