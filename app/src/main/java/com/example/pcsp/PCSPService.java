@@ -25,7 +25,7 @@ public class PCSPService extends Service {
     private Socket mSocket;
     BufferedReader br;
     PrintWriter out;
-    UserVO userVO;
+    UserVO userVO = new UserVO(0, "", "" ,"" ,"" ,"",0);
     BlockingQueue mBlockingQueue = new ArrayBlockingQueue(10);
 
     class SendRunnable implements Runnable{
@@ -77,13 +77,28 @@ public class PCSPService extends Service {
                     Log.i("서버에서 보낸 데이터", serverdata[0]);
                     Log.i("서버에서 보낸 데이터", serverdata[1]);
                     Log.i("서버에서 보낸 데이터", serverdata[2]);
-
-                    // 서버에서 들어오는 데이터가 /APP으로 시작하는 것만 해당 앱에서 사용될 데이터이다.
+//                    ANDROID/LOGIN/FAIL
+//                    ANDROID/LOGIN/OK/" + userVO.toString()
+                    // 서버에서 들어오는 데이터가 ANDROID로 시작하는 것만 해당 앱에서 사용될 데이터이다.
                     if (serverdata[0].equals("ANDROID")){
                         if (serverdata[1].equals("LOGIN")){
                             ComponentName cname_login = new ComponentName("com.example.pcsp", "com.example.pcsp.LoginActivity");
                             mReceiveIntent.setComponent(cname_login);
-                            mReceiveIntent.putExtra("USERVO", userVO);
+                            Log.i(" 노우오우오우오우노우ㅗㄴ웅ㅇㄴ ", serverdata[2]);
+
+                            if (serverdata[2].equals("OK")){
+                                String[] userdata = serverdata[3].split(",");
+                                Log.i("USERDATA",userdata[5]);
+                                userVO = userVO.setUserVO(userdata);
+                                Log.i(" 노우오우오우오우노우ㅗㄴ웅ㅇㄴ ", userVO.getUserName());
+                                mReceiveIntent.putExtra("LOGIN_RESULT", "OK");
+                                mReceiveIntent.putExtra("USERINFO", userVO);
+                            }
+                            if (serverdata[2].equals("FAIL")){
+                                Log.i(" 노우오우오우오우노우ㅗㄴ웅ㅇㄴ ", "설마");
+                                mReceiveIntent.putExtra("LOGIN_RESULT", "FAIL");
+                                Log.i(" 노우오우오우오우노우ㅗㄴ웅ㅇㄴ ", "여기가 문제인가");
+                            }
                             mReceiveIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             mReceiveIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             mReceiveIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

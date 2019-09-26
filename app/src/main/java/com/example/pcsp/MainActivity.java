@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
 //        Intent login_intent = getIntent();
 //        if (login_intent != null){
 //            userVO = login_intent.getParcelableExtra("USERVO");

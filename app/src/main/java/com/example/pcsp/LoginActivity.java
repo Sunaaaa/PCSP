@@ -106,11 +106,10 @@ public class LoginActivity extends AppCompatActivity {
     public void doLogin() {
         Intent intent = new Intent();
         ComponentName cname_loginok = new ComponentName("com.example.pcsp",
-                "com.example.pcsp.PCSPService");
+                "com.example.pcsp.MainActivity");
         intent.setComponent(cname_loginok);
         intent.putExtra("USERVO", userVO);
         startActivity(intent);
-
     }
 
     public void makeDialog() {
@@ -129,16 +128,16 @@ public class LoginActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         String login_result = intent.getExtras().getString("LOGIN_RESULT");
-        Log.i("LOGIN_RESULT_SERVICE", "");
+        Log.i("LOGIN_RESULT_SERVICE", "과연 로그인 결과는!!!!!");
 
         if (login_result != null) {
-            String[] userData = login_result.split(",");
-            if (userData[0].equals("OK")) {
+            if (login_result.equals("OK")) {
                 Log.i("LOGIN_OK","로그인 성공");
-
-//                doLogin();
+                userVO = intent.getParcelableExtra("USERINFO");
+                Log.i("LOGIN_OK",userVO.getUserName());
+                doLogin();
             }
-            if (userData[0].equals("FAIL")) {
+            if (login_result.equals("FAIL")) {
                 Log.i("LOGIN_FAIL","로그인 실패");
                 makeDialog();
             }

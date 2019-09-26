@@ -12,6 +12,16 @@ public class UserVO implements Parcelable {
     String userAddress;
     int areaNum;
 
+    public UserVO(int userNum, String userName, String userId, String userPw, String userPhoneNum, String userAddress, int areaNum) {
+        this.userNum = userNum;
+        this.userName = userName;
+        this.userId = userId;
+        this.userPw = userPw;
+        this.userPhoneNum = userPhoneNum;
+        this.userAddress = userAddress;
+        this.areaNum = areaNum;
+    }
+
     protected UserVO(Parcel in) {
         userNum = in.readInt();
         userName = in.readString();
@@ -33,6 +43,34 @@ public class UserVO implements Parcelable {
             return new UserVO[size];
         }
     };
+
+    public void setUserNum(int userNum) {
+        this.userNum = userNum;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setUserPw(String userPw) {
+        this.userPw = userPw;
+    }
+
+    public void setUserPhoneNum(String userPhoneNum) {
+        this.userPhoneNum = userPhoneNum;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public void setAreaNum(int areaNum) {
+        this.areaNum = areaNum;
+    }
 
     public int getUserNum() {
         return userNum;
@@ -60,6 +98,11 @@ public class UserVO implements Parcelable {
 
     public int getAreaNum() {
         return areaNum;
+    }
+
+    public UserVO setUserVO(String[] userdata){
+        UserVO mUserVO = new UserVO(Integer.parseInt(userdata[0]), userdata[1], userdata[2], userdata[3], userdata[4], userdata[5], Integer.parseInt(userdata[6]));
+        return mUserVO;
     }
 
     @Override
