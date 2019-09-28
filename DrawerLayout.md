@@ -89,6 +89,17 @@
 
 <br>
 
+### 드로어 화면의 슬라이딩 방향
+
+- android:layout_gravity = "start"   OR   android:layout_gravity = "left" : 좌측 슬라이드 메뉴
+- android:layout_gravity = "end"   OR   android:layout_gravity = "right" : 우측 슬라이드 메뉴
+
+<br>
+
+<br>
+
+#### 
+
 #### MainActivity.java
 
 ```java
@@ -142,18 +153,4 @@ public class MainActivity extends AppCompatActivity {
 }
 
 ```
-
-
-
-<br>
-
-<br>
-
-#### 
-
-<br>
-
-<br>
-
-#### 
 
