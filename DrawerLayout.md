@@ -10,6 +10,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_light"
     tools:context=".MainActivity">
 
     <!--배경이 될 Layout-->
@@ -25,13 +26,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="드로어 열기" />
+            android:text="드로어 Open" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="기본 배경이 될 화면"
+            android:text="구글 맵 위치"
             android:textColor="#f33"
             android:textSize="24dp" />
 
@@ -43,7 +44,7 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
-        android:background="#ffffff"
+        android:background="@android:color/holo_purple"
         android:layout_gravity="start">
 
         <LinearLayout
@@ -59,7 +60,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="23dp"
-            android:text="드로어가 될 화면"
+            android:text="사용자 메뉴"
             android:textColor="#f70"
             android:textSize="24dp" />
 
@@ -153,4 +154,3 @@ public class MainActivity extends AppCompatActivity {
 }
 
 ```
-
