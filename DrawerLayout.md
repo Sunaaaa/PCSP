@@ -89,7 +89,61 @@
 
 <br>
 
-#### 
+#### MainActivity.java
+
+```java
+package com.example.plication2;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.app.ActionBar;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // 전체 화면인 DrawrLayout 객체 참조
+        final DrawerLayout mDrawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
+
+        // Drawer 화면 (뷰) 객체 참조
+        final View mDrawerView = (View)findViewById(R.id.drawer);
+
+        // 드로어 화면을 열고 닫을 버튼 객체 참조
+        Button btn_openDrawer = (Button)findViewById(R.id.btn_OpenDrawer);
+        Button btn_closeDrawer = (Button)findViewById(R.id.btn_CloseDrawer);
+
+        // 드로어 화면을 여는 버튼 이벤트
+        btn_openDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDrawerLayout.openDrawer(mDrawerView);
+            }
+        });
+
+        // 드로어 화면을 닫는 버튼 이벤트
+        btn_closeDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDrawerLayout.closeDrawer(mDrawerView);
+            }
+        });
+
+    }
+}
+
+```
+
+
 
 <br>
 
