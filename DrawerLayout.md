@@ -1,0 +1,105 @@
+## DrawerLayout
+
+### activity_main
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--배경이 될 Layout-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#2030"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/btn_OpenDrawer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="드로어 열기" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="기본 배경이 될 화면"
+            android:textColor="#f33"
+            android:textSize="24dp" />
+
+    </RelativeLayout>
+
+    <!--드로어 화면이 될 Layout-->
+    <RelativeLayout
+        android:id="@+id/drawer"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:background="#ffffff"
+        android:layout_gravity="start">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
+            android:text="드로어가 될 화면"
+            android:textColor="#f70"
+            android:textSize="24dp" />
+
+        <Button
+            android:id="@+id/btn_CloseDrawer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="드로어 닫기" />
+
+    </RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
+```
+
+<br>
+
+<br>
+
+#### Error 해결
+
+<android.support.v4.widget.DrawerLayout> 대신 <androidx.drawerlayout.widget.DrawerLayout>을 사용하면 에러 해결!
+
+<br>
+
+<br>
+
+#### 
+
+<br>
+
+<br>
+
+#### 
+
+<br>
+
+<br>
+
+#### 
+
