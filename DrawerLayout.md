@@ -165,11 +165,13 @@ public class MainActivity extends AppCompatActivity {
 
 #### 메인 화면
 
-![1569682710694](C:\Users\USER\AppData\Roaming\Typora\typora-user-images\1569682710694.png)
+![1569682710694](https://user-images.githubusercontent.com/39547788/65818379-08877e00-e24c-11e9-860e-1e6e4a564bcf.jpg)
+
+<br><br>
 
 #### 드로어 화면
 
-![1569682730926](C:\Users\USER\AppData\Roaming\Typora\typora-user-images\1569682730926.png)
+![1569682730926](https://user-images.githubusercontent.com/39547788/65818378-07eee780-e24c-11e9-9c2c-9149224f07de.jpg)
 
 <br>
 
