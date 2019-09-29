@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pcsp.SharedPreferences.SaveSharedPreference;
 import com.example.pcsp.VO.UserVO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -106,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
         ComponentName cname_loginok = new ComponentName("com.example.pcsp",
                 "com.example.pcsp.MapsActivity");
         intent.setComponent(cname_loginok);
-        intent.putExtra("USERVO", userVO);
+//        intent.putExtra("USERVO", userVO);
         startActivity(intent);
     }
 
@@ -132,6 +133,7 @@ public class LoginActivity extends AppCompatActivity {
             if (login_result.equals("OK")) {
                 Log.i("LOGIN_OK","로그인 성공");
                 userVO = intent.getParcelableExtra("USERINFO");
+                SaveSharedPreference.setUserName(LoginActivity.this, userVO.getUserName());
                 Log.i("LOGIN_OK",userVO.getUserName());
                 doLogin();
             }

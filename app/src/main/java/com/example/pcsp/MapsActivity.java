@@ -6,11 +6,13 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.pcsp.SharedPreferences.SaveSharedPreference;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -44,16 +46,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 intent.putExtra("data","매뉴");
                 break;
 
-//            case R.id.btn_login:
-//                ComponentName cname_login = new ComponentName("com.example.pcsp","com.example.pcsp.LoginActivity");
-//                intent.setComponent(cname_login);
-//                intent.putExtra("data","로그인");
-//                break;
-
-//            case R.id.btn_splash:
-//                ComponentName cname_splash = new ComponentName("com.example.pcsp","com.example.pcsp.SplashActivity");
-//                intent.setComponent(cname_splash);
-//                intent.putExtra("data","스프레쉬");
         }
         startActivity(intent);
         return true;
@@ -62,6 +54,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        String name = SaveSharedPreference.getUserName(this);
+        Log.i("_MapsActivity",name);
         Log.i("_MapsActivity","Google Map 쨔잔");
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.

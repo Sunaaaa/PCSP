@@ -2,6 +2,7 @@ package com.example.pcsp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.pcsp.SharedPreferences.SaveSharedPreference;
 
 public class SplashActivity extends AppCompatActivity {
+
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +43,16 @@ public class SplashActivity extends AppCompatActivity {
 
         @Override
         public void run() {
-            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-            SplashActivity.this.finish();
+
+            // call LoginActivity
+            if(SaveSharedPreference.getUserName(SplashActivity.this).length() == 0) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                SplashActivity.this.finish();
+            } else {
+                // Call MapsActivity
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                SplashActivity.this.finish();
+            }
         }
     }
     @Override
